@@ -1,0 +1,16 @@
+Build.PL
+Changes
+lib/Perl/Critic/Policy/logicLAB/ModuleBlacklist.pm
+LICENSE
+Makefile.PL
+MANIFEST			This list of files
+META.json
+META.yml
+README
+t/changes.t
+t/critic.t
+t/example.conf
+t/implementation.t
+t/kwalitee.t
+t/perlcriticrc
+t/test.t

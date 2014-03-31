@@ -1,0 +1,133 @@
+NAME
+    Perl::Critic::Policy::logicLAB::ModuleBlacklist - blacklist modules you
+    want to prohibit use of
+
+AFFILIATION
+    This policy is a policy in the Perl::Critic::logicLAB distribution. The
+    policy is themed: logiclab.
+
+VERSION
+    This documentation describes version 0.01.
+
+DESCRIPTION
+    This policy can be used to specify a list of unwanted modules. Using a
+    blacklisting, so if the modules are used in the evaluated code a
+    violation is triggered.
+
+    In addition to blacklisting modules it is possible to recoomend
+    alternatives to blacklisted modules.
+
+CONFIGURATION AND ENVIRONMENT
+  modules
+    You can blacklist modules using the configuration parameter modules
+
+        [logicLAB::ModuleBlacklist]
+        modules = IDNA::Punycode
+
+    If you want to blacklist multiple modules specify using a comma
+    separated list:
+
+        [logicLAB::ModuleBlacklist]
+        modules = Try::Tiny, Contextual::Return, IDNA::Punycode
+
+    If you want to recommend alternatives to, use fat comma in addition
+
+        [logicLAB::ModuleBlacklist]
+        modules = Try::Tiny => TryCatch, Contextual::Return, IDNA::Punycode => Net::IDN::Encode
+
+DEPENDENCIES AND REQUIREMENTS
+    *   Perl 5.8.0
+
+    *   Module::Build
+
+    *   Perl::Critic
+
+    *   Perl::Critic::Utils
+
+    *   Perl::Critic::Policy
+
+    *   Test::More
+
+    *   Test::Perl::Critic
+
+    *   Data::Dumper
+
+    *   Carp
+
+INCOMPATIBILITIES
+    This distribution has no known incompatibilities.
+
+BUGS AND LIMITATIONS
+    There are no known bugs or limitations
+
+TEST AND QUALITY
+    The following policies have been disabled for this distribution
+
+    *   Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma
+
+        Constants are good, - see the link below.
+
+        *   <https://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-
+            ValuesAndExpressions-ProhibitConstantPragma>
+
+    *   Perl::Critic::Policy::NamingConventions::Capitalization
+
+    See also t/perlcriticrc
+
+  TEST COVERAGE
+    Coverage test executed the following way, the coverage report is based
+    on the version described in this documentation (see "VERSION").
+
+        ./Build testcover
+
+        ---------------------------- ------ ------ ------ ------ ------ ------ ------
+        File                           stmt   bran   cond    sub    pod   time  total
+        ---------------------------- ------ ------ ------ ------ ------ ------ ------
+        ...gicLAB/ModuleBlacklist.pm   88.9   63.6   40.0  100.0  100.0  100.0   83.6
+        Total                          88.9   63.6   40.0  100.0  100.0  100.0   83.6
+        ---------------------------- ------ ------ ------ ------ ------ ------ ------
+
+BUG REPORTING
+    Please report issues via CPAN RT:
+
+      http://rt.cpan.org/NoAuth/Bugs.html?Dist=Perl-Critic-Policy-logicLAB-ModuleBlacklist
+
+    or by sending mail to
+
+      bug-Perl-Critic-Policy-logicLAB-ModuleBlacklist@rt.cpan.org
+
+SEE ALSO
+    *   Perl::Critic
+
+    *   <http://logiclab.jira.com/wiki/display/PCLL/Home>
+
+MOTIVATION
+    I once read a article which compared programming languages to natural
+    languages. Programming languages in themselves are not large as such,
+    but if you also regard the APIs, data structures and components a
+    computer programmer use on a daily basis, the amount is enourmous.
+
+    Where I work We try to keep a more simple code base, the complexity is
+    in our business and that is our primary problem area, so it should not
+    be difficult to understand the code used to model this complexity.
+
+    So sometimes it is necessary to make a decision on what should be
+    allowed in our code base and what should not. This policy aims to
+    support this coding standard.
+
+AUTHOR
+    *   Jonas B. Nielsen, jonasbn "<jonasbn@cpan.org>"
+
+ACKNOWLEDGEMENT
+    *   Jeffrey Ryan Thalhammer (THALJEF) and the Perl::Critic contributors
+        for Perl::Critic
+
+LICENSE AND COPYRIGHT
+    Copyright (c) 2014 Jonas B. Nielsen, jonasbn. All rights reserved.
+
+    Perl::Critic::Policy::logicLAB::ModuleBlacklist; is released under the
+    Artistic License 2.0
+
+    The distribution is licensed under the Artistic License 2.0, as
+    specified by the license file included in this distribution.
+

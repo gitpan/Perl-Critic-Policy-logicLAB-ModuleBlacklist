@@ -1,0 +1,57 @@
+{
+   "abstract" : "blacklist modules you want to prohibit use of",
+   "author" : [
+      "Jonas B. Nielsen, (jonasbn) <jonasbn@cpan.org>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "Module::Build version 0.4005, CPAN::Meta::Converter version 2.132830",
+   "license" : [
+      "artistic_2"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Perl-Critic-Policy-logicLAB-ModuleBlacklist",
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Test::Perl::Critic" : "0"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0.40"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Carp" : "0",
+            "Data::Dumper" : "0",
+            "Perl::Critic::Policy" : "0",
+            "Perl::Critic::Utils" : "0",
+            "perl" : "v5.8.0"
+         }
+      }
+   },
+   "provides" : {
+      "Perl::Critic::Policy::logicLAB::ModuleBlacklist" : {
+         "file" : "lib/Perl/Critic/Policy/logicLAB/ModuleBlacklist.pm",
+         "version" : "0.01"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "http://rt.cpan.org/NoAuth/Bugs.html?Dist=Perl-Critic-Policy-logicLAB-ModuleBlacklist"
+      },
+      "homepage" : "https://github.com/jonasbn/Perl-Critic-Policy-logicLAB-ModuleBlacklist",
+      "license" : [
+         "http://www.perlfoundation.org/artistic_license_2_0"
+      ],
+      "repository" : {
+         "url" : "https://github.com/jonasbn/Perl-Critic-Policy-logicLAB-ModuleBlacklist"
+      }
+   },
+   "version" : "0.01"
+}
