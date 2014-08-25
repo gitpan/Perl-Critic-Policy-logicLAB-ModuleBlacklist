@@ -1,7 +1,5 @@
 package Perl::Critic::Policy::logicLAB::ModuleBlacklist;
 
-# $Id: ProhibitShellDispatch.pm 8114 2013-07-25 12:57:04Z jonasbn $
-
 use strict;
 use warnings;
 use 5.008;
@@ -11,7 +9,7 @@ use Perl::Critic::Utils qw{ $SEVERITY_MEDIUM :booleans};
 use Carp qw(carp);
 use Data::Dumper;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use constant supported_parameters => qw(modules debug);
 use constant default_severity     => $SEVERITY_MEDIUM;
@@ -66,6 +64,11 @@ sub violates {
             }
         }
 
+    #we ignore negative use statements, they are for pragma [issue1]
+    } elsif ( $children[0]->content eq 'no' ) {
+        if ( $self->{debug} ) {
+            print STDERR "located 'no' use statement\n";
+        }
     } else {
         carp 'Unable to locate package keyword';
     }
@@ -122,6 +125,8 @@ __END__
 
 =pod
 
+=encoding utf8
+
 =head1 NAME
 
 Perl::Critic::Policy::logicLAB::ModuleBlacklist - blacklist modules you want to prohibit use of
@@ -133,14 +138,14 @@ is themed: logiclab.
 
 =head1 VERSION
 
-This documentation describes version 0.01.
+This documentation describes version 0.02
 
 =head1 DESCRIPTION
 
 This policy can be used to specify a list of unwanted modules. Using a blacklisting, so if the 
 modules are used in the evaluated code a violation is triggered.
 
-In addition to blacklisting modules it is possible to recoomend alternatives to 
+In addition to blacklisting modules it is possible to recommend alternatives to
 blacklisted modules.
 
 =head1 CONFIGURATION AND ENVIRONMENT
@@ -252,11 +257,11 @@ or by sending mail to
 
 =head1 MOTIVATION
 
-I once read a article which compared programming languages to
+I once read an article which compared programming languages to
 natural languages. Programming languages in themselves are not
 large as such, but if you also regard the APIs, data structures
 and components a computer programmer use on a daily basis, the
-amount is enourmous.
+amount is enormous.
 
 Where I work We try to keep a more simple code base, the complexity
 is in our business and that is our primary problem area, so it should
@@ -264,7 +269,10 @@ not be difficult to understand the code used to model this complexity.
 
 So sometimes it is necessary to make a decision on what should be
 allowed in our code base and what should not. This policy aims to
-support this coding standard.
+support this coding practice.
+
+The practice it basically to prohibit problematic components and
+recommend alternatives where possible.
 
 =head1 AUTHOR
 
@@ -280,6 +288,8 @@ support this coding standard.
 
 =item * Jeffrey Ryan Thalhammer (THALJEF) and the Perl::Critic contributors for
 Perl::Critic
+
+=item * Milan Šorm for the first bug report on this policy
 
 =back
 

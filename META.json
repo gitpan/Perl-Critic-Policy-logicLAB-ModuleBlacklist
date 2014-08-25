@@ -4,7 +4,7 @@
       "Jonas B. Nielsen, (jonasbn) <jonasbn@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4005, CPAN::Meta::Converter version 2.132830",
+   "generated_by" : "Module::Build version 0.4205",
    "license" : [
       "artistic_2"
    ],
@@ -37,7 +37,7 @@
    "provides" : {
       "Perl::Critic::Policy::logicLAB::ModuleBlacklist" : {
          "file" : "lib/Perl/Critic/Policy/logicLAB/ModuleBlacklist.pm",
-         "version" : "0.01"
+         "version" : "0.02"
       }
    },
    "release_status" : "stable",
@@ -53,5 +53,5 @@
          "url" : "https://github.com/jonasbn/Perl-Critic-Policy-logicLAB-ModuleBlacklist"
       }
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }

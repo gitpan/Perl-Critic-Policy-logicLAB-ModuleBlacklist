@@ -1,6 +1,4 @@
 
-# $Id: test.t 7587 2011-04-16 16:00:36Z jonasbn $
-
 use strict;
 use warnings;
 
@@ -107,3 +105,13 @@ my $critic = Perl::Critic->new(
     is( scalar @violations, 0 );
 }
 
+#no statement [issue #1]
+{
+    my $str = q{package Acme::ContainsNoBlacklisted;
+    no warnings;
+    };
+
+    my @violations = $critic->critique( \$str );
+
+    is( scalar @violations, 0 );
+}
