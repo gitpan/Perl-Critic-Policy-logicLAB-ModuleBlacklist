@@ -9,7 +9,7 @@ use Perl::Critic::Utils qw{ $SEVERITY_MEDIUM :booleans};
 use Carp qw(carp);
 use Data::Dumper;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use constant supported_parameters => qw(modules debug);
 use constant default_severity     => $SEVERITY_MEDIUM;
@@ -33,7 +33,7 @@ sub violates {
 
     my @children = $elem->children;
 
-    if ( $children[0]->content eq 'use' ) {
+    if ( $children[0]->content eq 'use' or $children[0]->content eq 'require') {
 
         my $package = $children[2]->content;
 
@@ -67,7 +67,7 @@ sub violates {
     #we ignore negative use statements, they are for pragma [issue1]
     } elsif ( $children[0]->content eq 'no' ) {
         if ( $self->{debug} ) {
-            print STDERR "located 'no' use statement\n";
+            print STDERR "located 'no' use/require statement\n";
         }
     } else {
         carp 'Unable to locate package keyword';
@@ -138,7 +138,7 @@ is themed: logiclab.
 
 =head1 VERSION
 
-This documentation describes version 0.02
+This documentation describes version 0.03
 
 =head1 DESCRIPTION
 
@@ -289,7 +289,7 @@ recommend alternatives where possible.
 =item * Jeffrey Ryan Thalhammer (THALJEF) and the Perl::Critic contributors for
 Perl::Critic
 
-=item * Milan Šorm for the first bug report on this policy
+=item * Milan Šorm for the first and second bug reports on this policy
 
 =back
 
